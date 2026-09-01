@@ -1069,7 +1069,7 @@ let allFeatures = [];
 // ============================================================
 
 fetch(
-  "data/triton_sites.geojson"
+  "Datatriton_sites.geojson"
 )
 
 .then(response => {
@@ -1144,7 +1144,7 @@ fetch(
 
       Make sure
       <strong>
-        data/triton_sites.geojson
+        Datatriton_sites.geojson
       </strong>
       exists and open the project
       using Live Server.
