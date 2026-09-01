@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Brampton Triton Site Assessments</title>
+
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  >
+
+
+  <!-- Your CSS -->
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+
+<body>
+
+
+<div id="app">
+
+
+  <!-- ======================================================
+       LEFT SIDEBAR
+  ======================================================= -->
+
+  <aside id="sidebar">
+
+
+    <div class="sidebar-header">
+
+      <h1>
+        Brampton Manhole Site Assessments
+      </h1>
+
+      <p>
+        Potential Triton Monitor Locations
+      </p>
+
+    </div>
+
+
+
+    <!-- FILTERS -->
+
+    <div class="controls">
+
+
+      <label for="search">
+        Search Site
+      </label>
+
+      <input
+        id="search"
+        type="text"
+        placeholder="Search street or site..."
+      >
+
+
+
+      <label for="type-filter">
+        Site Type
+      </label>
+
+      <select id="type-filter">
+
+        <option value="All">
+          All Site Types
+        </option>
+
+        <option value="ICI">
+          ICI
+        </option>
+
+        <option value="Res">
+          Residential
+        </option>
+
+        <option value="Flooding">
+          Flooding
+        </option>
+
+      </select>
+
+
+
+      <button id="show-all">
+        Show All Sites
+      </button>
+
+
+    </div>
+
+
+
+    <!-- SITE LIST -->
+
+    <div id="site-list"></div>
+
+
+  </aside>
+
+
+
+  <!-- ======================================================
+       MAP
+  ======================================================= -->
+
+  <main id="map"></main>
+
+
+
+  <!-- ======================================================
+       INFORMATION PANEL
+  ======================================================= -->
+
+  <aside id="info-panel">
+
+
+    <button id="close-panel">
+      ×
+    </button>
+
+
+    <div id="site-content">
+
+
+      <div class="empty-state">
+
+        <h2>
+          Select a Site
+        </h2>
+
+        <p>
+          Click a site on the map or choose a location
+          from the site list to view the field assessment.
+        </p>
+
+      </div>
+
+
+    </div>
+
+
+  </aside>
+
+
+</div>
+
+
+
+<!-- ========================================================
+     JAVASCRIPT
+========================================================= -->
+
+
+<!-- Leaflet -->
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+
+<!-- Esri Leaflet -->
+<script
+  src="https://unpkg.com/esri-leaflet@3.0.15/dist/esri-leaflet.js">
+</script>
+
+
+<!-- Your generated photo paths -->
+<!-- MUST load before script.js -->
+<script src="sitephotos.js"></script>
+
+
+<!-- Main map -->
+<script src="script.js"></script>
+
+
+</body>
+
+</html>

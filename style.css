@@ -1,0 +1,1018 @@
+* {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #263238;
+}
+
+
+#app {
+  width: 100%;
+  height: 100vh;
+
+  display: grid;
+
+  grid-template-columns:
+    300px
+    1fr
+    390px;
+}
+
+
+
+/* ==========================================================
+   LEFT SIDEBAR
+========================================================== */
+
+#sidebar {
+
+  background: white;
+
+  border-right:
+    1px solid #d7dde2;
+
+  overflow-y: auto;
+
+  z-index: 1000;
+
+}
+
+
+.sidebar-header {
+
+  padding:
+    22px
+    20px
+    18px;
+
+  border-bottom:
+    1px solid #e3e7ea;
+
+}
+
+
+.sidebar-header h1 {
+
+  margin: 0;
+
+  font-size: 21px;
+
+  line-height: 1.25;
+
+}
+
+
+.sidebar-header p {
+
+  margin:
+    7px
+    0
+    0;
+
+  font-size: 13px;
+
+  color: #66757f;
+
+}
+
+
+
+/* ==========================================================
+   CONTROLS
+========================================================== */
+
+.controls {
+
+  padding:
+    16px
+    18px;
+
+  border-bottom:
+    1px solid #e3e7ea;
+
+}
+
+
+.controls label {
+
+  display: block;
+
+  margin:
+    0
+    0
+    6px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  color: #60717b;
+
+}
+
+
+.controls input,
+.controls select {
+
+  width: 100%;
+
+  padding: 10px;
+
+  margin-bottom: 14px;
+
+  border:
+    1px solid #cbd3d8;
+
+  border-radius: 5px;
+
+  font-size: 14px;
+
+  background: white;
+
+}
+
+
+.controls input:focus,
+.controls select:focus {
+
+  outline:
+    2px solid #a9c6d8;
+
+  border-color:
+    #668da6;
+
+}
+
+
+#show-all {
+
+  width: 100%;
+
+  border: none;
+
+  border-radius: 5px;
+
+  padding: 10px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  background:
+    #344955;
+
+  color: white;
+
+}
+
+
+#show-all:hover {
+
+  background:
+    #263942;
+
+}
+
+
+
+/* ==========================================================
+   SITE LIST
+========================================================== */
+
+#site-list {
+
+  padding-bottom: 30px;
+
+}
+
+
+.site-item {
+
+  padding:
+    13px
+    18px;
+
+  border-bottom:
+    1px solid #edf0f2;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease;
+
+}
+
+
+.site-item:hover {
+
+  background:
+    #f3f6f7;
+
+}
+
+
+.site-item.active {
+
+  background:
+    #e8f0f4;
+
+}
+
+
+.site-name {
+
+  font-weight: 700;
+
+  font-size: 14px;
+
+}
+
+
+.site-type {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 5px;
+
+  font-size: 12px;
+
+  color: #697981;
+
+}
+
+
+
+/* ==========================================================
+   SITE TYPE SYMBOLS IN LIST
+========================================================== */
+
+.type-symbol {
+
+  display: inline-block;
+
+  flex-shrink: 0;
+
+}
+
+
+/* ICI = BLUE SQUARE */
+
+.type-symbol.ici {
+
+  width: 12px;
+
+  height: 12px;
+
+  background:
+    #2878b5;
+
+  border:
+    2px solid white;
+
+  outline:
+    1px solid #2878b5;
+
+}
+
+
+/* RESIDENTIAL = GREEN CIRCLE */
+
+.type-symbol.res {
+
+  width: 12px;
+
+  height: 12px;
+
+  background:
+    #3f8f57;
+
+  border-radius: 50%;
+
+  border:
+    2px solid white;
+
+  outline:
+    1px solid #3f8f57;
+
+}
+
+
+/* FLOODING = ORANGE DIAMOND */
+
+.type-symbol.flooding {
+
+  width: 11px;
+
+  height: 11px;
+
+  background:
+    #d96a32;
+
+  transform:
+    rotate(45deg);
+
+  border:
+    1px solid white;
+
+  outline:
+    1px solid #d96a32;
+
+}
+
+
+
+/* ==========================================================
+   MAP
+========================================================== */
+
+#map {
+
+  width: 100%;
+
+  height: 100%;
+
+  z-index: 1;
+
+}
+
+
+
+/* ==========================================================
+   LEAFLET CUSTOM MARKERS
+========================================================== */
+
+.site-marker {
+
+  background:
+    transparent;
+
+  border:
+    none;
+
+}
+
+
+.marker-symbol {
+
+  width: 20px;
+
+  height: 20px;
+
+  border:
+    3px solid white;
+
+  box-shadow:
+    0 1px 5px
+    rgba(0,0,0,0.6);
+
+}
+
+
+/* ICI */
+
+.marker-ici {
+
+  background:
+    #2878b5;
+
+}
+
+
+/* RESIDENTIAL */
+
+.marker-res {
+
+  background:
+    #3f8f57;
+
+  border-radius:
+    50%;
+
+}
+
+
+/* FLOODING */
+
+.marker-flooding {
+
+  background:
+    #d96a32;
+
+  transform:
+    rotate(45deg);
+
+}
+
+
+
+/* ==========================================================
+   LEAFLET TOOLTIP
+========================================================== */
+
+.leaflet-tooltip {
+
+  font-size: 13px;
+
+}
+
+
+
+/* ==========================================================
+   LEGEND
+========================================================== */
+
+.map-legend {
+
+  background:
+    rgba(255,255,255,0.96);
+
+  padding:
+    11px
+    14px;
+
+  border-radius:
+    5px;
+
+  box-shadow:
+    0 1px 6px
+    rgba(0,0,0,0.25);
+
+  line-height:
+    20px;
+
+  color:
+    #333;
+
+}
+
+
+.map-legend-title {
+
+  font-weight:
+    700;
+
+  font-size:
+    13px;
+
+  margin-bottom:
+    7px;
+
+}
+
+
+.legend-row {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    9px;
+
+  font-size:
+    12px;
+
+  margin:
+    4px
+    0;
+
+}
+
+
+.legend-marker {
+
+  display:
+    inline-block;
+
+  flex-shrink:
+    0;
+
+}
+
+
+.legend-ici {
+
+  width:
+    13px;
+
+  height:
+    13px;
+
+  background:
+    #2878b5;
+
+  border:
+    2px solid white;
+
+  outline:
+    1px solid #2878b5;
+
+}
+
+
+.legend-res {
+
+  width:
+    13px;
+
+  height:
+    13px;
+
+  background:
+    #3f8f57;
+
+  border-radius:
+    50%;
+
+  border:
+    2px solid white;
+
+  outline:
+    1px solid #3f8f57;
+
+}
+
+
+.legend-flooding {
+
+  width:
+    11px;
+
+  height:
+    11px;
+
+  margin-left:
+    1px;
+
+  margin-right:
+    1px;
+
+  background:
+    #d96a32;
+
+  transform:
+    rotate(45deg);
+
+  border:
+    1px solid white;
+
+  outline:
+    1px solid #d96a32;
+
+}
+
+
+
+/* ==========================================================
+   INFORMATION PANEL
+========================================================== */
+
+#info-panel {
+
+  position:
+    relative;
+
+  background:
+    white;
+
+  border-left:
+    1px solid #d7dde2;
+
+  overflow-y:
+    auto;
+
+  z-index:
+    900;
+
+}
+
+
+#site-content {
+
+  padding:
+    22px;
+
+}
+
+
+#close-panel {
+
+  position:
+    absolute;
+
+  top:
+    10px;
+
+  right:
+    13px;
+
+  z-index:
+    10;
+
+  background:
+    none;
+
+  border:
+    none;
+
+  font-size:
+    27px;
+
+  color:
+    #66757f;
+
+  cursor:
+    pointer;
+
+}
+
+
+#close-panel:hover {
+
+  color:
+    #111;
+
+}
+
+
+.empty-state {
+
+  margin-top:
+    40px;
+
+  color:
+    #6a7880;
+
+}
+
+
+.empty-state h2 {
+
+  color:
+    #344955;
+
+}
+
+
+
+/* ==========================================================
+   SITE HEADING
+========================================================== */
+
+.site-heading {
+
+  padding-right:
+    25px;
+
+  margin-bottom:
+    20px;
+
+}
+
+
+.site-heading h2 {
+
+  margin:
+    0
+    0
+    7px;
+
+  font-size:
+    23px;
+
+}
+
+
+.site-badge {
+
+  display:
+    inline-block;
+
+  padding:
+    5px
+    9px;
+
+  border-radius:
+    4px;
+
+  color:
+    white;
+
+  font-size:
+    12px;
+
+  font-weight:
+    700;
+
+}
+
+
+.badge-ici {
+
+  background:
+    #2878b5;
+
+}
+
+
+.badge-res {
+
+  background:
+    #3f8f57;
+
+}
+
+
+.badge-flooding {
+
+  background:
+    #d96a32;
+
+}
+
+
+
+/* ==========================================================
+   ASSESSMENT SECTIONS
+========================================================== */
+
+.assessment-section {
+
+  margin:
+    19px
+    0;
+
+}
+
+
+.assessment-section h3 {
+
+  margin:
+    0
+    0
+    5px;
+
+  font-size:
+    12px;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    0.4px;
+
+  color:
+    #64757e;
+
+}
+
+
+.assessment-section p {
+
+  margin:
+    0;
+
+  font-size:
+    14px;
+
+  line-height:
+    1.5;
+
+}
+
+
+.extra-notes {
+
+  padding:
+    13px;
+
+  background:
+    #f3f5f6;
+
+  border-left:
+    4px solid #607d8b;
+
+  border-radius:
+    3px;
+
+}
+
+
+
+/* ==========================================================
+   PHOTO SECTION
+========================================================== */
+
+.photo-section {
+
+  margin-top:
+    26px;
+
+  padding-top:
+    12px;
+
+  border-top:
+    1px solid #e2e6e8;
+
+}
+
+
+.photo-section h3 {
+
+  margin:
+    0
+    0
+    10px;
+
+  font-size:
+    14px;
+
+}
+
+
+#photo-gallery {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap:
+    8px;
+
+}
+
+
+.photo-wrapper {
+
+  position:
+    relative;
+
+}
+
+
+#photo-gallery img {
+
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    135px;
+
+  object-fit:
+    cover;
+
+  border-radius:
+    5px;
+
+  cursor:
+    pointer;
+
+  border:
+    1px solid #d9dfe2;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+
+}
+
+
+#photo-gallery img:hover {
+
+  opacity:
+    0.88;
+
+  transform:
+    scale(1.015);
+
+}
+
+
+.no-photos {
+
+  grid-column:
+    1 / -1;
+
+  font-size:
+    13px;
+
+  color:
+    #77858c;
+
+}
+
+
+
+/* ==========================================================
+   MOBILE / SMALL SCREENS
+========================================================== */
+
+@media
+(max-width: 1000px) {
+
+  #app {
+
+    grid-template-columns:
+      250px
+      1fr;
+
+  }
+
+
+  #info-panel {
+
+    position:
+      absolute;
+
+    top:
+      0;
+
+    right:
+      0;
+
+    width:
+      390px;
+
+    max-width:
+      90vw;
+
+    height:
+      100%;
+
+    box-shadow:
+      -4px 0 15px
+      rgba(0,0,0,0.2);
+
+  }
+
+}
+
+
+
+@media
+(max-width: 700px) {
+
+  #app {
+
+    display:
+      block;
+
+  }
+
+
+  #sidebar {
+
+    position:
+      absolute;
+
+    width:
+      230px;
+
+    height:
+      100%;
+
+    z-index:
+      1100;
+
+  }
+
+
+  #map {
+
+    position:
+      absolute;
+
+    inset:
+      0;
+
+  }
+
+
+  #info-panel {
+
+    width:
+      90%;
+
+  }
+
+}
